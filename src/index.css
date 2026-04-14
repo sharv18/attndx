@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Syne:wght@700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.glow-orb {
+  position: fixed;
+  width: 380px;
+  height: 380px;
+  filter: blur(120px);
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-orb.green {
+  top: -140px;
+  right: -120px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.glow-orb.blue {
+  bottom: -160px;
+  left: -120px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.card-hover {
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.card-hover:hover::before {
+  animation: slideGlow 0.35s ease-out forwards;
+  opacity: 1;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Syne', system-ui, sans-serif;
+}
+
+@keyframes slideGlow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.gradient-button {
+  background: linear-gradient(135deg, #ffffff 0%, #bdbdbd 100%);
+  color: #000000;
+}
+
+.ghost-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.table-divider tr + tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.status-badge {
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 40;
+}
